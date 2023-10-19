@@ -10,7 +10,7 @@ export interface Billboard {
 `name`, and `billboard`. The `id` and `name` properties are of type `string`, while the `billboard`
 property is of type `Billboard`. The `Billboard` type is another interface that is defined earlier
 in the code. */
-export interface category {
+export interface Category {
     id: string;
     name: string;
     billboard: Billboard;

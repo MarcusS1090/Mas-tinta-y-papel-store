@@ -6,7 +6,7 @@ const Container: React.FC<ContainerProps> = ({
     children
 }) => {
     return ( 
-        <div className="mx-auto w-[1696px]  h-[159px]">
+        <div className="mx-auto w-11/12 h-40 ">
             {children}
         </div>
     );

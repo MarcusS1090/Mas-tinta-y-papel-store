@@ -19,13 +19,14 @@ const Navbar = async () => {
             border-b
         ">
             <Container>
+            
                 <div className="relative px-4 sm:px-9 lg:px-8 flex items-center lg:w-auto lg:h-[160px] md:w-auto sm:w-auto ">
                     <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2 ">
                         <Image 
                             src={logo}
                             alt="logo"
                             quality={100}
-                            className="w-[154px] h-[114px]"
+                            className="lg:w-auto lg:h-40"
                         />
                     </Link>
                     <MainNav

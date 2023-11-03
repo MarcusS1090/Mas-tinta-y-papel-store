@@ -13,7 +13,7 @@ const Navbar = async () => {
     
     return ( 
         <div className="
-            h-[175px]
+            h-[170px]
             bg-purple-300
             shadow 
             border-b

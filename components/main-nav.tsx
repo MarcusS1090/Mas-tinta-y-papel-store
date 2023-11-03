@@ -8,6 +8,7 @@ import { Input, NextUIProvider } from "@nextui-org/react";
 
 import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io5";
 
+import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 
 import {
     ChatIcon,
@@ -46,14 +47,11 @@ const MainNav: React.FC<MainNavProps> = ({
     return ( 
         <NextUIProvider>
             <div className="
-                border border-black
                 container
                 lg:w-[550px]
                 h-[70px]
                 mx-auto
-                bg-zinc-300
-                bg-opacity-0
-                my-3
+                my-2
                 flex
                 items-center
                 transition
@@ -63,7 +61,7 @@ const MainNav: React.FC<MainNavProps> = ({
                 hover:scale-110
                 duration-300
             ">
-                <div className=" 
+                <div className="
                     bg-pink-600
                     top-[1px]
                     w-[600px]
@@ -80,36 +78,64 @@ const MainNav: React.FC<MainNavProps> = ({
                         onClear={() => {}}
                         type="text" />  
                 </div>
-                <div className="container lg:w-14 lg:h-14 bg-pink-600 rounded-[30px] mx-2 shadow-inner border-2 border-rose-200">
+                <div className="container lg:w-14 lg:h-14 bg-pink-600 rounded-[30px] mx-2 shadow-inner border-2 border-rose-200 ">
                     <Button isIconOnly variant="ghost" aria-label="Search">
-                        <SearchIcon className="lg:w-10 lg:h-10 relative shadow my-1 mx-1 text-pink-300"/>
+                        <SearchIcon className="lg:w-10 lg:h-10 relative my-1 mx-1 text-pink-200"/>
                     </Button>
                 </div>
             </div>
-            <div className="w-30 h-[60px] bg-zinc-300 bg-opacity-0 border border-black absolute flex right-32 top-3 items-center">
-                <div className="w-16 h-16 bg-pink-600 rounded-[30px] shadow-inner border-2 mx-1 border-rose-200">
+            <div className="w-30 h-[60px] absolute flex md:right-10 top-3 items-center">
+                <div className="
+                w-14
+                h-14
+                bg-pink-600
+                rounded-[30px]
+                shadow-inner
+                border-2
+                mx-1
+                border-rose-200
+                transition
+                ease-in-out
+                delay-150
+                hover:-translate-y-1
+                hover:scale-110
+                duration-300">
                 <Link href="https://instagram.com/mas_tintaypapel?igshid=MzRlODBiNWFlZA==" 
                     className="
                     flex
                     ">
-                        <IoLogoInstagram className="w-16 h-12 mt-1 mx-auto text-pink-200"/>
+                        <IoLogoInstagram className="w-10 h-11 mt-1 mx-auto text-pink-200"/>
                 </Link>
                 </div>
-                <div className="w-16 h-16 bg-pink-600 rounded-[30px] shadow-inner border-2 mx-1 py-0 border-rose-200">
+                <div className="
+                w-14
+                h-14
+                bg-pink-600
+                rounded-[30px]
+                shadow-inner
+                border-2
+                mx-1
+                py-0
+                border-rose-200
+                transition
+                ease-in-out
+                delay-150
+                hover:-translate-y-1
+                hover:scale-110
+                duration-300">
                 <Link href="https://wa.me/message/QFCXC6OV7NEQA1" 
                     className="
                     flex
                     ">
-                    <IoLogoWhatsapp className="w-16 h-12 mt-1 mx-auto text-pink-200"/>
+                    <IoLogoWhatsapp className="w-10 h-10 mt-1 mx-auto text-pink-200"/>
                 </Link>
                 </div>
             </div>
             <div className="
-                border border-black
                 container
                 w-[570px]
                 h-[70px]
-                py-1
+                py-2
                 mx-auto
                 my-auto
                 transition
@@ -124,7 +150,7 @@ const MainNav: React.FC<MainNavProps> = ({
                     border
                     container
                     lg:mx-4
-                    py-2
+                    py-1
                     w-auto
                     h-auto
                     flex
@@ -132,7 +158,6 @@ const MainNav: React.FC<MainNavProps> = ({
                     space-x-4
                     lg:space-x-2
                     bg-rose-200
-                    bg-opacity-70
                     rounded-[35px]
                     shadow
                 "

@@ -7,28 +7,37 @@ import Image from "next/image";
 
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
     data: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({data}) => {
+
+    const router = useRouter();
+    const handleClick = () => {
+        router.push(`/products/${data?.id}`);
+    }
+
     return (
-        <div className="
-        bg-white
-        group
-        cursor-pointer
-        rounded-xl
-        space-x-auto
-        border
-        p-3
-        space-y-4
-        transition
-        ease-in-out
-        delay-150
-        hover:-translate-y-1
-        hover:scale-110
-        duration-300 ">
+        <div 
+        onClick={handleClick}
+        className="
+            bg-white
+            group
+            cursor-pointer
+            rounded-xl
+            space-x-auto
+            border
+            p-3
+            space-y-4
+            transition
+            ease-in-out
+            delay-150
+            hover:-translate-y-1
+            hover:scale-110
+            duration-300 ">
             {/* Imagenes y acciones de estas */}
             <div className="aspect-square rounded-xl bg-gray-100 relative">
                 <Image 

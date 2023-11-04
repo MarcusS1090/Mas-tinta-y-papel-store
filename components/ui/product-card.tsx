@@ -6,6 +6,7 @@ import { Expand, ShoppingCart } from "lucide-react"
 import Image from "next/image";
 
 import IconButton from "@/components/ui/icon-button";
+import Currency from "@/components/ui/currency";
 
 interface ProductCardProps {
     data: Product;
@@ -13,7 +14,21 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({data}) => {
     return (
-        <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+        <div className="
+        bg-white
+        group
+        cursor-pointer
+        rounded-xl
+        space-x-auto
+        border
+        p-3
+        space-y-4
+        transition
+        ease-in-out
+        delay-150
+        hover:-translate-y-1
+        hover:scale-110
+        duration-300 ">
             {/* Imagenes y acciones de estas */}
             <div className="aspect-square rounded-xl bg-gray-100 relative">
                 <Image 
@@ -26,27 +41,27 @@ const ProductCard: React.FC<ProductCardProps> = ({data}) => {
                     <div className="flex gap-x-6 justify-center">
                         <IconButton
                             onClick={() => {}}
-                            icon={<Expand size={50} className="text-gray-600" />}
+                            icon={<Expand size={25} className="text-gray-600" />}
                         />
                         <IconButton
                             onClick={() => {}}
-                            icon={<ShoppingCart size={50} className="text-gray-600" />}
+                            icon={<ShoppingCart size={25} className="text-gray-600" />}
                         />
                     </div>
                 </div>
             </div>
             {/* Descripcion */}
             <div>
-                <p className="font-semibold text-2xl">
+                <p className="font-semibold text-2xl ">
                     {data.name}
                 </p>
-                <p className="text-lg text-gray-500">
+                <p className="text-lg text-gray-500 ">
                     {data.category?.name}
                 </p>
             </div>
             {/* Precios */}
             <div className="flex items-center justify-center">
-                <Currency value={data?.price}
+                <Currency value={data?.price} />
             </div>
         </div>
     );

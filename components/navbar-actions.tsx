@@ -1,6 +1,7 @@
 "use- client"
 
 import Button from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ShoppingCartIcon } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -14,13 +15,16 @@ const NavbarActions = () => {
     }, []);
 
     if (!isMounted) {
+
         return null;
     }
 
 
 return (
     <div className="ml-auto flex items-center gap-x-4">
-        <Button className="flex items-center rounded-full">
+        <Button className={cn(
+                            "p-1 flex items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300",
+                        )}>
             <ShoppingCartIcon 
                 size={32}
             />

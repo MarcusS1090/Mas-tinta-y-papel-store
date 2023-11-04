@@ -170,6 +170,7 @@ const MainNav: React.FC<MainNavProps> = ({
                                 hover:text-black
                                 mx-2
                                 ml-2
+                                transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300
                                 ">
                         <h1>Inicio</h1>
                 </Link>
@@ -181,11 +182,12 @@ const MainNav: React.FC<MainNavProps> = ({
                                 lg:text-[30px]
                                 hover:text-black
                                 mx-2
+                                transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300
                                 "
                             variant="faded"
                         >
                             Categorias
-                            <ChevronDownIcon className="lg:w-8 lg:h-8"/>
+                            <ChevronDownIcon className="lg:w-10 lg:h-10"/>
                         </Button>
                     </DropdownTrigger>
                         <DropdownMenu aria-label="Dynamic Actions" className="
@@ -216,7 +218,7 @@ const MainNav: React.FC<MainNavProps> = ({
                                     key={route.href}
                                     href={route.href}
                                     className={cn(
-                                        "text-sm transition-colors hover:text-black text-[30px] mx-3 font-medium ",
+                                        "text-sm transition-colors hover:text-black text-[30px] mx-0 px-1 font-medium ",
                                         route.active ? "text-black" : "text-white"
                                     )}
                                     >
@@ -228,10 +230,12 @@ const MainNav: React.FC<MainNavProps> = ({
                 </Dropdown>
                 <Link href="https://wa.me/message/QFCXC6OV7NEQA1" 
                     className="
+                    ml-2
                     flex
                     text-white
                     lg:text-[30px]
                     hover:text-black
+                    transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300
                     ">
                         <h1>Contactanos</h1>
                         <ChatIcon className="lg:w-8 lg:h-8 lg:mr-2 lg:mt-1 lg:mx-1"/>

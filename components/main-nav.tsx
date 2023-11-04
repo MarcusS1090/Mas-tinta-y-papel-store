@@ -23,6 +23,7 @@ import {
     DropdownItem,
     Button,
 } from "@nextui-org/react";
+import NavbarActions from "./navbar-actions";
 
 
 interface MainNavProps {
@@ -235,16 +236,7 @@ const MainNav: React.FC<MainNavProps> = ({
                         <h1>Contactanos</h1>
                         <ChatIcon className="lg:w-8 lg:h-8 lg:mr-2 lg:mt-1 lg:mx-1"/>
                 </Link>
-                <Link href="https://wa.me/message/QFCXC6OV7NEQA1" 
-                    className="
-                    flex
-                    text-white
-                    lg:text-[30px]
-                    hover:text-black
-                    ">
-                        <ShoppingCartIcon className="lg:w-8 lg:h-8 lg:mr-2 lg:mt-1 lg:mx-1"/>
-                </Link>
-                
+                        <NavbarActions />               
             </nav>
             </div>
         </NextUIProvider>

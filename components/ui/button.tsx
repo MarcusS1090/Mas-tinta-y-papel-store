@@ -19,7 +19,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
                 `
                 w-auto
                 px-auto
-                text-white hover:text-black
+                text-white lg:text-[20px] hover:text-black
                 py-0
                 disabled:cursor-not-allowed
                 disable:opacity-50

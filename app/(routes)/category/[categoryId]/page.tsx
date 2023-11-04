@@ -1,5 +1,12 @@
-import getProducts from "@/actions/get-products";
 import React from "react";
+
+import getColors from "@/actions/get-colors";
+import getProducts from "@/actions/get-products";
+import getSizes from "@/actions/get-sizes";
+import getCategory from "@/actions/get-category";
+import Container from "@/components/ui/container";
+import Billboard from "@/components/billboard";
+
 
 export const revalidate = 0;
 
@@ -22,11 +29,18 @@ const CategoryPage:React.FC<CategoryPageProps> = async ({
         categoryId: params.categoryId,
         colorId: searchParams.colorId,
         sizeId: searchParams.sizeId
-    })
+    });
+    const sizes = await getSizes();
+    const colors = await getColors();
+    const category = await getCategory(params.categoryId);
 
     return (  
-        <div>
-            pagina de categorias
+        <div className="bg-white">
+            <Container>
+                <Billboard 
+                    data={category.billboard}
+                />
+            </Container>
         </div>
     );
 }

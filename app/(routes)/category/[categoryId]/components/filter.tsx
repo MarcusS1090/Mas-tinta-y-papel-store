@@ -52,7 +52,7 @@ const Filter:React.FC<FilterProps> = ({
                 {data.map((filter) => (
                     <div key={filter.id} className="flex items-center">
                         <Button className={cn(
-                            "p-1 text-grey-80 rounded-lg border border-pink-600 text-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300",
+                            "p-1 text-grey-80 rounded-lg border border-pink-600 text-xl transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-200",
                             selectedValue === filter.id && "bg-pink-600 text-white"
                         )}
                         onClick={() => onClick(filter.id)}

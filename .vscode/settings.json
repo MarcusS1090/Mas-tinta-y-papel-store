@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
         "acciones",
+        "almacenamiento",
+        "Añadido",
         "Añadir",
         "carrito",
         "Categorias",
@@ -8,8 +10,10 @@
         "derechos",
         "Descripcion",
         "DESTACADOS",
+        "Eliminado",
         "encontrados",
         "encuentra",
+        "esta",
         "estas",
         "Galeria",
         "gustar",
@@ -25,6 +29,8 @@
         "Papel",
         "papeleria",
         "Precios",
+        "producto",
+        "Producto",
         "PRODUCTOS",
         "pueden",
         "relacionados",
@@ -33,6 +39,7 @@
         "Tamaño",
         "Tienda",
         "Tinta",
-        "Todos"
+        "Todos",
+        "zustand"
     ]
 }

@@ -8,5 +8,4 @@ const getProduct = async (id: string) : Promise<Product> => {
     return res.json();
 }
 
-
 export default getProduct;

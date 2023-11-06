@@ -1,9 +1,13 @@
+"use client";
 import { Product } from "@/types";
 
 import { ShoppingCart } from "lucide-react";
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+import useCart from "@/hooks/use-cart";
+import { MouseEventHandler } from "react";
 
 
 
@@ -13,7 +17,13 @@ interface InfoProps {
 
 
 const Info:React.FC<InfoProps> = ({data}) => {
+    const cart = useCart();
 
+    const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.stopPropagation();
+
+        cart.addItem(data);
+    };
 
     return (  
         <div>
@@ -45,17 +55,19 @@ const Info:React.FC<InfoProps> = ({data}) => {
                 </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">
-                <Button className={cn(
-                            "rounded-full border-2 border-pink-300 bg-pink-600 w-auto h-auto flex items-center gap-x-0 transition ease-in-out delay-200 hover:-translate-y-2 hover:scale-125 duration-300",
-                        )}>
-                    {/*
-                        rounded-full border-2 border-pink-300 bg-pink-600 w-44 h-11 flex items-center gap-x-0 transition
-                ease-in-out
-                delay-200
-                hover:-translate-y-2
-                hover:scale-125
-                duration-300
-                    */}
+                <Button
+                    onClick={onAddToCart}
+                    className={cn(
+                                "rounded-full border-2 border-pink-300 bg-pink-600 w-auto h-auto flex items-center gap-x-0 transition ease-in-out delay-200 hover:-translate-y-2 hover:scale-125 duration-300",
+                            )}>
+                        {/*
+                            rounded-full border-2 border-pink-300 bg-pink-600 w-44 h-11 flex items-center gap-x-0 transition
+                    ease-in-out
+                    delay-200
+                    hover:-translate-y-2
+                    hover:scale-125
+                    duration-300
+                        */}
                     Añadir al carrito
                     <ShoppingCart />
                 </Button>

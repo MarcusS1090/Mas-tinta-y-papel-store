@@ -1,4 +1,3 @@
-import { SizeLimit } from "next";
 
 export interface Billboard {
     id: string;
@@ -16,6 +15,7 @@ export interface Product {
     id: string;
     category: Category;
     name: string;
+    quantity:number;
     price: string;
     isFeatured:boolean;
     size:Size;

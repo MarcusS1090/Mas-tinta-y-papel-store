@@ -49,11 +49,14 @@ const MainNav: React.FC<MainNavProps> = ({
     return ( 
         <NextUIProvider>
             <div className="
-                container
-                lg:w-[550px]
-                h-[70px]
-                mx-auto
+                xl:w-[600px] lg:w-9/12
+                xl:h-16
+                lg:mx-20
+                mr-2
+                ml-2    
                 my-2
+                pb-2
+                pt-2
                 flex
                 items-center
                 transition
@@ -66,8 +69,8 @@ const MainNav: React.FC<MainNavProps> = ({
                 <div className="
                     bg-pink-600
                     top-[1px]
-                    w-[600px]
-                    h-[63px]
+                    xl:w-[800px] lg:w-96
+                    xl:h-14 lg:h-12
                     py-3
                     rounded-[30px]
                     shadow-inner
@@ -80,13 +83,32 @@ const MainNav: React.FC<MainNavProps> = ({
                         onClear={() => {}}
                         type="text" />  
                 </div>
-                <div className="container lg:w-14 lg:h-14 bg-pink-600 rounded-[30px] mx-2 shadow-inner border-2 border-rose-200 ">
-                    <Button isIconOnly variant="ghost" aria-label="Search">
-                        <SearchIcon className="lg:w-10 lg:h-10 relative my-1 mx-1 text-pink-200"/>
-                    </Button>
+                <div 
+                    className="
+                        xl:w-14 lg:w-12
+                        xl:h-14 lg:h-12
+                        bg-pink-600
+                        rounded-[30px]
+                        mx-2
+                        border-2
+                        border-rose-200 
+                    ">
+                        <Button isIconOnly variant="ghost" aria-label="Search">
+                            <SearchIcon className="lg:w-10 lg:h-10 relative lg:mr-2 lg:mb-2 lg:mx-1 lg:p-1 text-pink-200"/>
+                        </Button>
                 </div>
             </div>
-            <div className="w-30 h-[60px] absolute flex md:right-10 top-3 items-center">
+            <div 
+                className="
+                    xl:w-22 lg:w-22 
+                    h-[60px]
+                    absolute
+                    flex
+                    xl:right-12 lg:right-10
+                    top-2
+                    items-center
+                    "
+                >
                 <div className="
                 w-14
                 h-14
@@ -134,10 +156,11 @@ const MainNav: React.FC<MainNavProps> = ({
                 </div>
             </div>
             <div className="
-                container
-                w-[570px]
-                h-[70px]
+                xl:w-[600px]
+                h-[60px]
                 py-2
+                pt-0
+                pb-3
                 mx-auto
                 my-auto
                 transition
@@ -149,9 +172,10 @@ const MainNav: React.FC<MainNavProps> = ({
             ">
             <nav
                 className="
-                    border
+                    border-2
+                    border-pink-300
                     container
-                    lg:mx-4
+                    xl:ml-2 xl:mr-2
                     py-1
                     w-auto
                     h-auto

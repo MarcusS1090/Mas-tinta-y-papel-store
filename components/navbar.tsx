@@ -7,7 +7,6 @@ import logo from "../public/logo.png"
 
 import MainNav from "@/components/main-nav";
 import getCategories from "@/actions/get-categories";
-import NavbarActions from "@/components/navbar-actions";
 
 export const revalidate = 0;
 
@@ -17,25 +16,40 @@ const Navbar = async () => {
     
     return ( 
         <div className="
-            h-[170px]
+            h-38
             bg-purple-300
             shadow 
             border-b
         ">
             <Container>
             
-                <div className="relative px-4 sm:px-9 lg:px-8 flex items-center lg:w-auto lg:h-[160px] md:w-auto sm:w-auto ">
-                    <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2 ">
-                        <Image 
-                            src={logo}
-                            alt="logo"
-                            quality={100}
-                            className="lg:w-auto lg:h-40"
+                <div 
+                    className="
+                        relative
+                        xl:right-0 lg:right-10
+                        pb-3
+                        mx-auto
+                        xl:px-28 lg:px-2 
+                        flex
+                        items-center
+                        xl:w-[1150px] lg:w-[900px] md:w-auto sm:w-auto
+                        lg:h-[150px]
+                        xl:gap-x-0 lg:gap-x-4
+                        "
+                    >
+                        <Link href="/" className="ml-0">
+                            <Image 
+                                src={logo}
+                                alt="logo"
+                                quality={100}
+                                className="
+                                    xl:w-44 lg:w-28
+                                "
+                            />
+                        </Link>
+                        <MainNav
+                            data={categories}
                         />
-                    </Link>
-                    <MainNav
-                        data={categories}
-                    />
                 </div>
             </Container>
         </div>

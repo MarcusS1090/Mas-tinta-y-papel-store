@@ -1,20 +1,19 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Category } from "@/types";
+import { Category} from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Input, NextUIProvider } from "@nextui-org/react";
 
 import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io5";
 
-import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
+import { useEffect, useState } from "react"
 
 import {
     ChatIcon,
     ChevronDownIcon,
     SearchIcon,
-    ShoppingCartIcon
 } from "@heroicons/react/outline";
 import {
     Dropdown,
@@ -23,8 +22,9 @@ import {
     DropdownItem,
     Button,
 } from "@nextui-org/react";
-import NavbarActions from "./navbar-actions";
 
+import NavbarActions from "./navbar-actions";
+import axios from "axios";
 
 interface MainNavProps {
     data: Category[];
@@ -36,7 +36,8 @@ interface MainNavProps {
 const MainNav: React.FC<MainNavProps> = ({
     data
 }) => {
-        const pathname = usePathname();
+
+    const pathname = usePathname();
 
     const routes = data.map((route) => ({
         href: `/category/${route.id}`,

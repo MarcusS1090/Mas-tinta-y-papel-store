@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 import { Color, Size } from "@/types";
 import { Dialog } from "@headlessui/react";
-import { Plus, X, XCircle } from "lucide-react";
+import { Plus, XCircle } from "lucide-react";
 
 
 import { useState } from "react";

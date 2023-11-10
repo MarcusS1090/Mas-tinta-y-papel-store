@@ -1,63 +1,53 @@
-import React from "react";
-
 import getColors from "@/actions/get-colors";
 import getProducts from "@/actions/get-products";
 import getSizes from "@/actions/get-sizes";
-import getCategory from "@/actions/get-category";
-
 import Container from "@/components/ui/container";
-import Billboard from "@/components/billboard";
-
-import Filter from "@/app/(routes)/category/[categoryId]/components/filter";
-import MobilFilters from "@/app/(routes)/category/[categoryId]/components/mobil-Filters";
-
+import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
-
+import MobileFilters from "./components/mobile-filters";
 
 export const revalidate = 0;
 
-interface CategoryPageProps {
+interface FilterPropsPage {
     params: {
-        categoryId: string;
+        searchString: string;
     },
     searchParams: {
         colorId: string;
-        sizeId: string
+        sizeId: string;
     }
 }
 
-const CategoryPage:React.FC<CategoryPageProps> = async ({
-    params,
-    searchParams
-}) => {
+const FilterPage = async ({
+    params, searchParams
+}: FilterPropsPage) => {
 
     const products = await getProducts({
-        categoryId: params.categoryId,
+        searchValue: params.searchString,
         colorId: searchParams.colorId,
         sizeId: searchParams.sizeId
     });
+
     const sizes = await getSizes();
     const colors = await getColors();
-    const category = await getCategory(params.categoryId);
 
-    return (  
+    return ( 
         <div className="bg-white">
             <Container>
-                <Billboard 
-                    data={category.billboard}
-                />
-                <div className="px-4 sm:px-6 lg:px-8 pb-24">
+                <div className="pt-10 px-4 sm:px-6 lg:px-8 pb-24">
                     <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-                        {/*Añadiendo los filtros para los mobiles */}
-                        <MobilFilters sizes={sizes} colors={colors} />
+                        <MobileFilters
+                            sizes={sizes}
+                            colors={colors}
+                        />
                         <div className="hidden lg:block">
-                            <Filter 
+                            <Filter
                                 valueKey="sizeId"
                                 name="Sizes"
                                 data={sizes}
                             />
-                            <Filter 
+                            <Filter
                                 valueKey="colorId"
                                 name="Colors"
                                 data={colors}
@@ -81,4 +71,4 @@ const CategoryPage:React.FC<CategoryPageProps> = async ({
     );
 }
 
-export default CategoryPage;
+export default FilterPage;

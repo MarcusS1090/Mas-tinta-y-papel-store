@@ -25,6 +25,7 @@ import {
 
 import NavbarActions from "./navbar-actions";
 import axios from "axios";
+import NavbarSearch from "./ui/navbar-search";
 
 interface MainNavProps {
     data: Category[];
@@ -49,8 +50,7 @@ const MainNav: React.FC<MainNavProps> = ({
     return ( 
         <NextUIProvider>
             <div className="
-                container
-                lg:w-[550px]
+                lg:w-[560px]
                 h-[70px]
                 mx-auto
                 my-2
@@ -63,28 +63,7 @@ const MainNav: React.FC<MainNavProps> = ({
                 hover:scale-110
                 duration-300
             ">
-                <div className="
-                    bg-pink-600
-                    top-[1px]
-                    w-[600px]
-                    h-[63px]
-                    py-3
-                    rounded-[30px]
-                    shadow-inner
-                    border-2
-                    border-rose-200
-                    text-white
-                    lg:text-[30px]">
-                    <Input
-                        isClearable
-                        onClear={() => {}}
-                        type="text" />  
-                </div>
-                <div className="container lg:w-14 lg:h-14 bg-pink-600 rounded-[30px] mx-2 shadow-inner border-2 border-rose-200 ">
-                    <Button isIconOnly variant="ghost" aria-label="Search">
-                        <SearchIcon className="lg:w-10 lg:h-10 relative my-1 mx-1 text-pink-200"/>
-                    </Button>
-                </div>
+                <NavbarSearch />
             </div>
             <div className="w-30 h-[60px] absolute flex md:right-10 top-3 items-center">
                 <div className="

@@ -7,7 +7,7 @@ import logo from "../public/logo.png"
 
 import MainNav from "@/components/main-nav";
 import getCategories from "@/actions/get-categories";
-import NavbarActions from "@/components/navbar-actions";
+
 
 export const revalidate = 0;
 

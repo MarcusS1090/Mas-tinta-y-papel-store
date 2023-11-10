@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({data}) => {
         <div 
         onClick={handleClick}
         className="
-            bg-white-900
+            bg-white
             group
             cursor-pointer
             rounded-xl

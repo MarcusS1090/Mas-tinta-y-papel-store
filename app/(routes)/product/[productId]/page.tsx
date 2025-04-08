@@ -5,6 +5,11 @@ import Gallery from "@/components/gallery";
 import Info from "@/components/info";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
+import Button from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import toast from "react-hot-toast";
+import {useState} from "react";
+import useCart from "@/hooks/use-cart";
 
 interface ProductPageProps {
     params: {

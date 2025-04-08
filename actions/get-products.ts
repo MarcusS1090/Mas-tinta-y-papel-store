@@ -10,6 +10,7 @@ interface Query {
     sizeId?: string;
     searchValue?: string;
     isFeatured?: boolean;
+    quuantity?: number;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -21,11 +22,19 @@ const getProducts = async (query: Query): Promise<Product[]> => {
             sizeId: query.sizeId,
             searchValue: query.searchValue,
             isFeatured: query.isFeatured,
+            quantity: query.quantity,
         }
     });
 
     const res = await fetch(url);
-    return res.json();
+    if (!res.ok) {
+        throw new Error("Error al obtener los productos.");
+    }
+    const products: product[] = await res.json();
+    return products.map((product) => ({
+        ...product,
+        quantity: product.quantity ?? 0, // Asegúrate de que quantity esté definido
+    }));
 }
 
 export default getProducts;

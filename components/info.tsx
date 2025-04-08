@@ -6,7 +6,10 @@ import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import { Input } from "@nextui-org/react";
+import { toast } from "react-hot-toast";
 import useCart from "@/hooks/use-cart";
+import { useState, MouseEventHandler } from "react";
 import { MouseEventHandler } from "react";
 
 
@@ -19,10 +22,43 @@ interface InfoProps {
 const Info:React.FC<InfoProps> = ({data}) => {
     const cart = useCart();
 
+    const [quantity, setQuantity] = useState<number>(1); // Cantidad inicial
+    const [error, setError] = useState<string | null>(null); // Error inicial
+
+    const incrementQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity + 1, data.quantity); // Incrementa la cantidad
+        setError(null); // Restablece el error
+    }
+
+    const decrementQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity - 1, 1); // Decrementa la cantidad
+        setError(null); // Restablece el error
+    }
+
+    const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = parseInt(e.target.value, 10);
+        if (isNaN(value) || value < 1) {
+            setQuantity(1);
+            setError("La cantidad debe ser al menos 1");
+        } else if (value > data.quantity) {
+            setQuantity(data.quantity);
+            setError("Lo sentimos, no tenemos esa cantidad en stock");
+        } else {
+            setQuantity(value);
+            setError(null);
+        }
+    }
+
     const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
 
-        cart.addItem(data);
+        cart.addItem({
+            ...data,
+            orderQuantity: quantity,
+        });
+
+        setQuantity(1); // Restablece la cantidad a 1 después de agregar al carrito
+        toast.success("Producto agregado al carrito");
     };
 
     return (  
@@ -55,6 +91,68 @@ const Info:React.FC<InfoProps> = ({data}) => {
                 </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">
+                <h2 className="text-2xl font-semibold text-black mb-2">
+                    Cantidad:
+                </h2>
+                <div className="flex items-center space-x-2">
+                    <Button
+                        disabled={quantity <= 1}
+                        onClick={decrementQuantity}
+                        className="
+                            w-5
+                            h-5
+                            flex
+                            text-black
+                            rounded-full
+                            items-center
+                            justify-center
+                            bg-pink-200
+                            hover:bg-pink-300">
+                                -
+                    </Button>
+                    <Input 
+                        className="
+                            w-16
+                            h-6
+                            text-center
+                            border
+                            border-purple-300
+                            rounded-md
+                            focus: outline-none
+                            focus: ring-blue-500"
+                        onChange={handleQuantityChange}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                        }}
+                        value={quantity.toString()} // Asegúrate de que sea una cadena
+                        min={1}
+                        max={data.quantity}
+                        type="number"
+                        placeholder="Cantidad"
+                    />
+                    <Button
+                        disabled={quantity >= data.quantity}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            incrementQuantity();
+                        }}
+                        className="
+                            w-5
+                            h-5
+                            flex
+                            text-black
+                            rounded-full
+                            items-center
+                            justify-center
+                            bg-pink-200
+                            hover:bg-pink-300"
+                    >
+                        +
+                    </Button>
+                </div>
+                {error && <p className="text-red-500">{error}</p>}
+                
                 <Button
                     onClick={onAddToCart}
                     className={cn(

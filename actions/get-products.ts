@@ -10,7 +10,7 @@ interface Query {
     sizeId?: string;
     searchValue?: string;
     isFeatured?: boolean;
-    quuantity?: number;
+    quantity?: number;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -30,7 +30,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
     if (!res.ok) {
         throw new Error("Error al obtener los productos.");
     }
-    const products: product[] = await res.json();
+    const products: Product[] = await res.json();
     return products.map((product) => ({
         ...product,
         quantity: product.quantity ?? 0, // Asegúrate de que quantity esté definido

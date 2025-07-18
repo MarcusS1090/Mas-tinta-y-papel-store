@@ -10,9 +10,6 @@ import { Input } from "@nextui-org/react";
 import { toast } from "react-hot-toast";
 import useCart from "@/hooks/use-cart";
 import { useState, MouseEventHandler } from "react";
-import { MouseEventHandler } from "react";
-
-
 
 interface InfoProps {
     data:Product;
@@ -26,12 +23,12 @@ const Info:React.FC<InfoProps> = ({data}) => {
     const [error, setError] = useState<string | null>(null); // Error inicial
 
     const incrementQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity + 1, data.quantity); // Incrementa la cantidad
+        setQuantity(prevQuantity => prevQuantity + 1); // Incrementa la cantidad
         setError(null); // Restablece el error
     }
 
     const decrementQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity - 1, 1); // Decrementa la cantidad
+        setQuantity(prevQuantity => prevQuantity - 1); // Decrementa la cantidad
         setError(null); // Restablece el error
     }
 
@@ -90,17 +87,16 @@ const Info:React.FC<InfoProps> = ({data}) => {
                     </h3>
                 </div>
             </div>
-            <div className="mt-10 flex items-center gap-x-3">
-                <h2 className="text-2xl font-semibold text-black mb-2">
+            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-y-4 sm:gap-x-3">
+                <h2 className="text-2xl font-semibold text-black mb-2 sm:mb-0">
                     Cantidad:
                 </h2>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 justify-center">
                     <Button
                         disabled={quantity <= 1}
                         onClick={decrementQuantity}
                         className="
-                            w-5
-                            h-5
+                            p-2
                             flex
                             text-black
                             rounded-full
@@ -112,8 +108,10 @@ const Info:React.FC<InfoProps> = ({data}) => {
                     </Button>
                     <Input 
                         className="
+                            flex
+                            justify-center
+                            items-center
                             w-16
-                            h-6
                             text-center
                             border
                             border-purple-300
@@ -138,8 +136,7 @@ const Info:React.FC<InfoProps> = ({data}) => {
                             incrementQuantity();
                         }}
                         className="
-                            w-5
-                            h-5
+                            p-2
                             flex
                             text-black
                             rounded-full
@@ -156,16 +153,8 @@ const Info:React.FC<InfoProps> = ({data}) => {
                 <Button
                     onClick={onAddToCart}
                     className={cn(
-                                "rounded-full border-2 border-pink-300 bg-pink-600 w-auto h-auto flex items-center gap-x-0 transition ease-in-out delay-200 hover:-translate-y-2 hover:scale-125 duration-300",
+                                " content-center rounded-full border-2 border-pink-300 bg-pink-600 w-full sm:w-auto h-auto flex items-center justify-center gap-x-2 transition ease-in-out delay-200 hover:-translate-y-2 hover:scale-125 duration-300",
                             )}>
-                        {/*
-                            rounded-full border-2 border-pink-300 bg-pink-600 w-44 h-11 flex items-center gap-x-0 transition
-                    ease-in-out
-                    delay-200
-                    hover:-translate-y-2
-                    hover:scale-125
-                    duration-300
-                        */}
                     Añadir al carrito
                     <ShoppingCart />
                 </Button>

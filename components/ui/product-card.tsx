@@ -54,7 +54,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         };
 
         cart.addItem(order);
-        toast.success("Producto agregado al carrito");
     };
 
     const incrementQuantity = () => {
@@ -153,8 +152,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                     </Button>
                     <Input
                         className="
+                            flex
+                            justify-center
+                            items-center
                             w-16
-                            h-6
                             text-center
                             border
                             border-purple-300

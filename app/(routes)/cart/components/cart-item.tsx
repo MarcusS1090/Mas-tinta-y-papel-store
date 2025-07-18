@@ -75,48 +75,57 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                 />
             </div>
             <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-                <div className="absolute z-10 right-0 lg:left-full top-0 pl-5">
+                <div className="absolute z-10 right-0 top-0">
                     <IconButton onClick={onRemove} icon={<XCircleIcon size={20} />} />
                 </div>
                 <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-                    <div className="flex justify-between">
+                    <div className="flex flex-col justify-between">
                         <p className="text-xl font-semibold text-black">{data.name}</p>
+                        <div className="mt-1 flex text-lg">
+                            <p className="text-gray-500">{data.color.name}</p>
+                            <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">
+                                {data.size.name}
+                            </p>
+                        </div>
+                        <Currency value={data.price} />
                     </div>
-
-                    <div className="mt-1 flex text-lg">
-                        <p className="text-gray-500">{data.color.name}</p>
-                        <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">
-                            {data.size.name}
-                        </p>
+                    <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between">
+                        <h3 className="text-sm font-medium text-gray-700">Cantidad</h3>
+                        <div className="flex items-center space-x-2 mt-2 sm:mt-0">
+                            <Button
+                                disabled={quantity <= 1}
+                                onClick={decrementQuantity}
+                                className="p-2 flex text-black rounded-full items-center justify-center bg-pink-200 hover:bg-pink-300"
+                            >
+                                -
+                            </Button>
+                            <Input
+                                className="
+                                flex
+                                justify-center
+                                items-center
+                                w-16
+                                text-center
+                                border
+                                border-purple-300
+                                rounded-md
+                                focus: outline-none
+                                focus: ring-blue-500"
+                                type="number"
+                                value={quantity.toString()}
+                                onChange={handleQuantityChange}
+                                placeholder="cantidad"
+                            />
+                            <Button
+                                onClick={incrementQuantity}
+                                className="p-2 flex text-black rounded-full items-center justify-center bg-pink-200 hover:bg-pink-300"
+                                disabled={quantity >= data.quantity}
+                            >
+                                +
+                            </Button>
+                        </div>
+                        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     </div>
-                    <Currency value={data.price} />
-                </div>
-                <div className="mt-4 flex items-center justify-between">
-                    <h3 className="text-sm font-medium text-gray-700">Cantidad</h3>
-                    <div className="flex items-center space-x-2 mt-2">
-                        <Button
-                            disabled={quantity <= 1}
-                            onClick={decrementQuantity}
-                            className="w-5 h-5 flex text-black rounded-full items-center justify-center bg-pink-200 hover:bg-pink-300"
-                        >
-                            -
-                        </Button>
-                        <Input
-                            className="w-16 h-6 text-center text-black border-none focus:ring-0"
-                            type="number"
-                            value={quantity.toString()}
-                            onChange={handleQuantityChange}
-                            placeholder="cantidad"
-                        />
-                        <Button
-                            onClick={incrementQuantity}
-                            className="w-5 h-5 flex text-black rounded-full items-center justify-center bg-pink-200 hover:bg-pink-300"
-                            disabled={quantity >= data.quantity}
-                        >
-                            +
-                        </Button>
-                    </div>
-                    {error && <p className="text-red-500">{error}</p>}
                 </div>
             </div>
         </li>

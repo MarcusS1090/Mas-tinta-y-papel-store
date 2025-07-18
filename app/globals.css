@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html,
+body {
   height: 100%;
-  width: 100%;
-  background: linear-gradient(180deg, #FCFCFC 0%, rgba(255, 186, 213, 0.52));
+}
+
+body {
+  background: linear-gradient(to bottom right, theme('colors.purple.300'), theme('colors.rose.200'));
+  background-attachment: fixed;
 }

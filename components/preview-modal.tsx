@@ -5,8 +5,6 @@ import Modal from "@/components/ui/modal";
 import Gallery from "@/components/gallery";
 import Info from "@/components/info";
 import { useState } from "react";
-import Button from "@/components/ui/button";
-import { Input } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import useCart from "@/hooks/use-cart";
 

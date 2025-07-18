@@ -1,12 +1,17 @@
 import { Billboard as BillboardType} from "@/types";
 
 interface BillboardProps {
-    data: BillboardType  | null
+    data: BillboardType | null;
 };
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
-    if (!data) {
-        return <div>Cargando...</div>;
+    
+    if (!data || Object.keys(data).length === 0) {
+        return (
+            <div className="p-4 sm:p-6 lg:p-8 rounded-xl bg-gray-200 h-full flex items-center justify-center">
+                <span className="text-gray-500">No hay datos disponibles</span>
+            </div>
+        );
     }
 
     return (

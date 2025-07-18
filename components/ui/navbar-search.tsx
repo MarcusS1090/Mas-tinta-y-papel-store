@@ -38,25 +38,29 @@ const NavbarSearch = () => {
                     flex
                     items-center
                     top-0
-                    w-[550px]
-                    h-[63px]
-                    py-3
+                    w-full
+                    max-w-md
+                    h-12 lg:h-10
+                    py-1 pl-4 pr-0
                     rounded-[30px]
                     shadow-inner
                     border-2
                     border-rose-200
-                    text-white
-                    lg:text-[30px]">
+                    text-white">
                     <Input
                         isClearable
                         onClear={() => {}}
                         type="text"
                         id="default-search"
+                        classNames={{
+                            inputWrapper: "bg-transparent shadow-none",
+                            input: "text-white placeholder-white text-base lg:text-lg pl-0",
+                        }}
                         {...form.register('search')}
             />  
-                <div className="z-10 rounded-[30px] border-pink-300 bg-pink-500 inline-block mx-1 border-x-2">
-                    <Button isIconOnly variant="ghost" aria-label="Search" type="submit">
-                        <SearchIcon className="lg:w-8 lg:h-8 flex my-2 mx-2 text-pink-200"/>
+                <div className="z-10 h-full w-auto rounded-r-[30px] overflow-hidden">
+                    <Button isIconOnly variant="ghost" aria-label="Search" type="submit" className="h-full lg:w-14 w-14 rounded-none px-4 bg-transparent">
+                        <SearchIcon className="md:w-20 sm:w-10 md:h-26 sm:h-10 text-pink-200 lg:w-28 lg:h-28"/>
                     </Button>
                 </div>
             </div>

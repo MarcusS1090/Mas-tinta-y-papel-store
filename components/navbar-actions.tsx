@@ -26,16 +26,21 @@ const NavbarActions = () => {
 
 
 return (
-    <div className="ml-auto flex items-center gap-x-4">
+    <div className="ml-auto flex items-center gap-x-2 lg:gap-x-4">
         <Button 
             onClick={() => router.push("/cart")}
             className={cn(
-                            "p-1 flex items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300",
+                            "p-3 flex items-center rounded-full bg-pink-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300",
                         )}>
-            <ShoppingCartIcon 
-                size={32}
+            <ShoppingCartIcon
+                size={20} // Tamaño base para pantallas grandes
+                strokeWidth={1.5}
+                color="white"
+                aria-label="Carrito de compras"
+                data-testid="cart-icon"                
+                className="text-pink-200 lg:size-8 sm:size-4" // Tamaño para pantallas grandes
             />
-            <span className="ml-1 mx-2 text-lg font-bold">
+            <span className="ml-1 mx-1 text-lg font-bold text-white lg:mx-2 lg:text-xl">
                 {cart.items.length}
             </span>
         </Button>

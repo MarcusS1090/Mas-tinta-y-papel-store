@@ -20,13 +20,17 @@ interface FilterPropsPage {
 }
 
 const FilterPage = async ({
-    params, searchParams
+    params,
+    searchParams
 }: FilterPropsPage) => {
+    // Explicitly await params and searchParams as per the error message
+    const resolvedParams = await Promise.resolve(params);
+    const resolvedSearchParams = await Promise.resolve(searchParams);
 
     const products = await getProducts({
-        searchValue: params.searchString,
-        colorId: searchParams.colorId,
-        sizeId: searchParams.sizeId
+        searchValue: resolvedParams.searchString,
+        colorId: resolvedSearchParams.colorId,
+        sizeId: resolvedSearchParams.sizeId
     });
 
     const sizes = await getSizes();

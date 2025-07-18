@@ -41,31 +41,23 @@ const Summary = () => {
 
         setLoading(true);
         try {
-            console.log("URL de la API:", `${process.env.NEXT_PUBLIC_API_URL}/checkout`);
-            console.log("Datos enviados:", items.map((item) => ({
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                quantity: item.orderQuantity,
-            })));
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-                cartItems: items.map((item) => ({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.orderQuantity,
-                })),
-                
+                productIds: items.map((item) => item.id)
             });
 
             if (response.data?.url) {
-                window.location.href = response.data.url; // Redirige al enlace de checkout
+                window.location.href = response.data.url;
             } else {
                 throw new Error("No se recibió una URL de redirección.");
             }
         } catch (error) {
-            console.error("Error en el checkout:", error.response?.data || error.message);
-            toast.error("Algo salió mal, intenta de nuevo.");
+            let message = "Algo salió mal, intenta de nuevo.";
+            if (axios.isAxiosError(error) && typeof error.response?.data === 'string') {
+                message = error.response.data;
+            } else if (error instanceof Error) {
+                message = error.message;
+            }
+            toast.error(message);
         } finally {
             setLoading(false);
         }

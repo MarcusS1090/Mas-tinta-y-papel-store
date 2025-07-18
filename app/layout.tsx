@@ -3,12 +3,11 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
 
-
 import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 import ModalProvider from '@/providers/modal-provider'
 import ToastProvider from '@/providers/toast-provider'
-
+import getCategories from '@/actions/get-categories'
 
 const font = Urbanist({ subsets: ['latin-ext'] })
 
@@ -17,17 +16,19 @@ export const metadata: Metadata = {
   description: 'encuentra lo mejor y lo mas kawai en nuestra papeleria',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const categories = await getCategories();
+
   return (
-      <html lang="es">
+      <html lang="es" suppressHydrationWarning>
         <body className={font.className}>
           <ModalProvider />
           <ToastProvider />
-          <Navbar />
+          <Navbar categories={categories} />
           {children}
           <Footer />
         </body>

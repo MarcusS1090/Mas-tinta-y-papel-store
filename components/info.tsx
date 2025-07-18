@@ -55,7 +55,6 @@ const Info:React.FC<InfoProps> = ({data}) => {
         });
 
         setQuantity(1); // Restablece la cantidad a 1 después de agregar al carrito
-        toast.success("Producto agregado al carrito");
     };
 
     return (  

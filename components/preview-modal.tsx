@@ -59,7 +59,6 @@ const PreviewModal = () => {
         }
 
         // Aquí puedes agregar la lógica para añadir al carrito
-        toast.success("Producto agregado al carrito");
     };
 
     return (
